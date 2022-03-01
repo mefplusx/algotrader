@@ -1,0 +1,7 @@
+HTTPAPI_PORT : 8091
+
+HOSTCONNECTOR_ADDRESS : http://127.0.0.1:8090
+
+EXCHANGE_API_KEY        : **********
+EXCHANGE_API_SECRET     : **********
+EXCHANGE_API_PASSPHRASE : **********

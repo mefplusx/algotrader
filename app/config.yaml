@@ -1,0 +1,53 @@
+HTTPAPI_PORT     : 8090
+HTTPAPI_HANDLERS : [LOG, DATA, SETCANDLE]
+
+REMOTEDATACONNECTOR_USE_CACHE : true
+REMOTEDATACONNECTOR_HOST      : http://206.189.129.114:8090
+REMOTEDATACONNECTOR_FINDNODES : [
+  http://192.168.0.103:8090,
+  http://192.168.0.100:8090,
+  http://192.168.0.105:8090
+]
+
+ANALYTIC_FEE                    : 0.5
+ANALYTIC_ALLOW_SHORT            : false
+ANALYTIC_ALLOW_LONG             : true
+ANALYTIC_LEVERAGE               : 1
+# ANALYTIC_TAKE_LINE_BY_SLIDEDOWN : 0.08 # |---------------|
+# ANALYTIC_PERC_IN                : 0.01 # |  для FEE 0.2  |
+# ANALYTIC_TAKE_AFTER             : 3    # |               |
+# ANALYTIC_SLIDEDOWN              : 1    # |      2485     |
+# ANALYTIC_STOP                   : 2.5  # |               |
+# ANALYTIC_VALUE_USDT             : 0    # |               |
+# ANALYTIC_REPEAT                 : 9    # |---------------|
+ANALYTIC_TAKE_LINE_BY_SLIDEDOWN : 0.05
+ANALYTIC_PERC_IN                : 0.01
+ANALYTIC_TAKE_AFTER             : 1
+ANALYTIC_SLIDEDOWN              : 0
+ANALYTIC_STOP                   : 999
+ANALYTIC_VALUE_USDT             : 0
+ANALYTIC_REPEAT                 : 9
+# ANALYTIC_TAKE_LINE_BY_SLIDEDOWN : 0.09   # |---------------|
+# ANALYTIC_PERC_IN                : 0.01   # |  для FEE 0.5  |
+# ANALYTIC_TAKE_AFTER             : 3      # |               |
+# ANALYTIC_SLIDEDOWN              : 1      # |      1701     | // на момент просчета остановлся на красной
+# ANALYTIC_STOP                   : 2.5    # |               | // потом зеленая на 1784
+# ANALYTIC_VALUE_USDT             : 0      # |               |
+# ANALYTIC_REPEAT                 : 9      # |---------------|
+
+FINDER_TAKE_LINE_BY_SLIDEDOWN : [0.05, 0.1, 0.01]
+FINDER_PERC_IN                : [0.01, 0.01, 1]
+FINDER_TAKE_AFTER             : [0, 5, 0.5]
+FINDER_SLIDEDOWN              : [0, 5, 0.5]
+FINDER_STOP                   : [0, 0, 1]
+FINDER_VALUE_USDT             : [0, 0,  1]
+FINDER_REPEAT                 : [0, 15, 1]
+FINDER_MIN_COUNT_TRANSACTIONS : 10
+FINDER_TYPE                   : "best total usd"      #тип поиска:
+                                                      #best simple percent - лучший результат в простом проценте
+                                                      #best total usd      - лучшая выходная цена, сложный процент
+                                                      #toggle              - чередование красный/зеленый
+FINDER_RULES                  : [
+  TAKE_AFTER > STOP > SLIDEDOWN,
+  TAKE_AFTER - SLIDEDOWN > FEE
+]
